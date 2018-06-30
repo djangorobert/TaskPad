@@ -1,0 +1,28 @@
+{% extends "tasklist/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<a href="{% url 'tasklist:task_form' %}" class="button button5">Add Task</a>
+
+<ul>
+    {% for x in object_list %}
+    <li>{{ x.name }} 
+    
+	
+	<a href="{% url 'tasklist:task_update_form' x.id %}">
+	<img class='trash' src="{% static 'css/if_icon-136-document-edit_314724.svg' %}" />
+	</a>
+	
+	
+	
+	
+	<a href="{% url 'tasklist:task_confirm_delete' x.id %}">
+	<img class='trash' src="{% static 'css/if_Delete_2290850.svg' %}" />
+	</a>
+	
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
