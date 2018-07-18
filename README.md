@@ -1,5 +1,5 @@
 # TaskPad
-A Smiple Django CRUD Task Pad for everyday use to keep up with tasks that just need to get done.
+A Simple Django CRUD Task Pad for everyday use to keep up with tasks that just need to get done.
 
 # IF YOU WANT TO CLONE HERES THE QUICKSTART
 
