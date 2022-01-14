@@ -1,0 +1,15 @@
+{% extends 'tasklist/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+
+<h1>Sign Up</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+
+    <button class="btn btn-primary" type="submit">Signup</button>
+</form>
+<p>Already a member? Click here.<a type="button" class="btn btn-warning" href="{% url 'tasklist:login' %}">Login</a></p>
+
+{% endblock %}

@@ -2,57 +2,93 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Task Pad</title>
-	
+
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <style>
+        ul.base {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li.base {
+            float: left;
+        }
+
+        li.base a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li.base a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #04AA6D;
+        }
+    </style>
 
 </head>
+
 <body>
+    <ul class="base">
+        <li class="base"><a href="{% url 'tasklist:profile' %}">Home</a></li>
+        {% if request.user.is_authenticated %}
+
+        <li class="base"><a href="{% url 'tasklist:task_form' %}">Add Task</a></li>
+        <li class="base"><a href="{% url 'tasklist:profile' %}">My Account</a></li>
+        <li class="base"><a href="{% url 'tasklist:logout' %}">Logout</a></li>
+        {% else %}
+
+        <li class="base"><a href="">About</a></li>
+        <li class="base"><a href="{% url 'tasklist:signup' %}">Sign Up</a></li>
+        <li class="base"><a href="{% url 'tasklist:login' %}">Login</a></li>
+        {% endif %}
 
 
-
-
+    </ul>
     <section>
-        <figure>
-            <img src="{% static 'css/if_Survey_2290855.svg' %}" />
-        </figure>
-
+        <figure><img src="{% static 'css/if_Survey_2290855.svg' %}" /></figure>
         <article>
             <h3>Tasky</h3>
-             {% block content %}
-			{% endblock %}
+            {% block content %}
+
+
+
+            {% endblock %}
+
+
         </article>
     </section>
-	
-	<section>
-        <figure>
-            <img src="{% static 'css/if_10_1517190.svg' %}" />
-        </figure>
-
-       
+    <section>
+        <figure><img src="{% static 'css/if_10_1517190.svg' %}" /></figure>
     </section>
-	
-	<section>
-        <figure>
-            <img src="{% static 'css/if_4_1517203.svg' %}" />
-        </figure>
-
-       
+    <section>
+        <figure><img src="{% static 'css/if_4_1517203.svg' %}" /></figure>
     </section>
+    <script src="enterview.js"></script>
+    <script>enterView({
 
-   <script src="enterview.js"></script>
+            selector: 'img',
+            enter: function (el) {
+                el.classList.add('entered');
+            }
+        }
 
-    <script>
-    enterView({
-	selector: 'img',
-	enter: function(el) {
-		el.classList.add('entered');
-	}
-});
+        );
     </script>
 </body>
+
 </html>

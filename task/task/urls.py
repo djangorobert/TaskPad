@@ -19,6 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from tasklist import views
 urlpatterns = [
+    
+	path('', include('tasklist.urls')),
     path('admin/', admin.site.urls),
-	path('', include('tasklist.urls'))
+    path('accounts/', include('allauth.urls')),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
