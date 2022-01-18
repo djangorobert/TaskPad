@@ -10,6 +10,7 @@ from django.contrib import messages
 #for the functional views authentication
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
+from django.shortcuts import get_object_or_404
 
 #Import the generic views here
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
@@ -42,6 +43,12 @@ class TaskList(LoginRequiredMixin, ListView):
     login_url = '/login/'
     redirect_field_name = 'login'
     model = Task
+    
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user_name'] = Task.objects.filter(user_name=self.request.user)
+        return context
    
     
    
@@ -90,6 +97,10 @@ def register_view(request):
         'form': form
     }
     return render(request, 'tasklist/signup.html', context)
+
+def about(request):
+    return render(request, 'tasklist/about.html')
+
 
 @login_required
 def profile(request):

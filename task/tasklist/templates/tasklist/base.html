@@ -44,7 +44,7 @@
 
 <body>
     <ul class="base">
-        <li class="base"><a href="{% url 'tasklist:profile' %}">Home</a></li>
+        <li class="base"><a href="{% url 'tasklist:task_list' %}">Home</a></li>
         {% if request.user.is_authenticated %}
 
         <li class="base"><a href="{% url 'tasklist:task_form' %}">Add Task</a></li>

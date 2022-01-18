@@ -1,5 +1,6 @@
 {% extends 'tasklist/base.html' %}
 {% load crispy_forms_tags %}
+{% load socialaccount %}
 {% block content %}
 <h1>Login</h1>
 
@@ -18,12 +19,14 @@
         <li>
             <a title="Google" class="socialaccount_provider google"
                 href="/accounts/google/login/?process=login">Google</a>
+
         </li>
 
 
     </ul>
 
     <div class="login-or">or</div>
+
 
 </div>
 <p>Click here to Signup.<a type="button" class="btn btn-warning" href="{% url 'tasklist:signup' %}">Join</a></p>
