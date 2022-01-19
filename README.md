@@ -15,6 +15,7 @@ a Tech genius they just need a tool that works and makes there life easier as th
 RUNNING LOCALLY: git clone https://github.com/djangorobert/TaskPad.git
 
 cd task
+pip install -r requirements.txt
 
 python manage.py migrate 
 python manage.py runserver
